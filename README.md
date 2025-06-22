@@ -117,24 +117,6 @@ Reminders sent via SendGrid to users with uncompleted habits
 
 Setup using node-cron in /jobs/ directory
 
-🧪 Testing
-
-Use Postman to test all routes. Pass your JWT token in the headers:
-
-🧪 API Docs & Tools
-
-📘 Swagger API Documentation
-
-👉 View Swagger Docs
-
-📬 Postman Collection
-
-👉 Open in Postman
-
-Use Postman to test all routes. Pass your JWT token in the headers:
-
-Authorization: Bearer <your_token>
-
 🧑‍💻 Author
 
 Samuel Friday
