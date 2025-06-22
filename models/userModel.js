@@ -25,9 +25,12 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-}, {
-  timestamps: true, 
-});
+},{
+  sequelize,
+ timestamps: true,
+  modelName: "User",
+  tableName: "user_tracker" // 👈 custom table name
+}); 
 
 export default User;
 

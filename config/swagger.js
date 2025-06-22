@@ -24,7 +24,7 @@ definition: {
 
     servers: [
       {
-        url: 'https://packsmart-app-backend-production.up.railway.app',
+        url: 'https://habit-tacker-backend-production.up.railway.app',
         description: 'Production Server',
       },
        {

@@ -47,6 +47,11 @@ const start = async () => {
       await sequelize.sync({ alter: true})
       console.log("database synced ")
 
+      
+      // //  await sequelize.sync({ force: true})
+      // console.log("tabeles dropped and recreated ")
+     
+
       app.listen(PORT, () => {
         console.log(`server running on port ${PORT}`)
       })
