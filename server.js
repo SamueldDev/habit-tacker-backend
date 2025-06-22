@@ -15,6 +15,8 @@ dotenv.config();
 import userRoute from "./routes/userRoute.js"
 import habitRoute from "./routes/habitRoute.js"
 
+// import testemailRoute from "./routes/testemailRoute.js"
+
 const PORT = process.env.PORT || 5000;
 
 const app = express()
@@ -26,7 +28,7 @@ app.use(express.json())
 
 app.use(cors())
 
-//Route
+//Routes
 app.get("/", (req, res) => {
     res.send("habit_tracker is live")
 })
@@ -34,11 +36,13 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoute)
 app.use("/api", habitRoute)
 
+// app.use("/api", testemailRoute)
+
 const start = async () => {
     try{
 
       await sequelize.authenticate()
-      console.log('DB connnected')
+      console.log('DB connected')
 
       await sequelize.sync({ alter: true})
       console.log("database synced ")
@@ -51,28 +55,11 @@ const start = async () => {
           console.log("⏱ Running daily streak reset...");
           await resetStreaks();
       });
-
-
-            
+  
       cron.schedule("* * * * *", async () => {
         console.log("📧 Running daily reminder emails...");
         await sendReminders();
       });
-
-      
-    
-
-      //  cron.schedule("* * * * *", async () => {
-      //   console.log("⏱ Running streak reset every minute (DEV MODE)");
-      //   await resetStreaks();
-      // });
-
-
-      // cron.schedule("0 20 * * *", async () => {
-      //   console.log("📧 Running daily reminder emails...");
-      //   await sendReminders();
-      // });
-
 
     }catch(err){  
         console.error("Unable to connect to database:", err)
@@ -81,6 +68,31 @@ const start = async () => {
 
 
 start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //  cron.schedule("* * * * *", async () => {
+  //   console.log("⏱ Running streak reset every minute (DEV MODE)");
+  //   await resetStreaks();
+  // });
+
+
+  // cron.schedule("0 20 * * *", async () => {
+  //   console.log("📧 Running daily reminder emails...");
+  //   await sendReminders();
+  // });
+
 
  // nodemon server.js
 
