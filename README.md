@@ -11,8 +11,6 @@ A simple and efficient REST API for tracking daily habits, built with **Node.js*
 - ✅ Track Habit Completion History
 - ✅ Streaks & Daily Resets (via cron job)
 - ✅ Email Reminders using SendGrid
-- ✅ Profile Picture Upload (Cloudinary)
-- ✅ Password Reset & Change
 
 ---
 
@@ -22,7 +20,6 @@ A simple and efficient REST API for tracking daily habits, built with **Node.js*
 - Sequelize ORM + MySQL
 - JWT for Authentication
 - SendGrid (Email)
-- Cloudinary (Image Uploads)
 - dotenv for environment config
 
 ---
@@ -32,17 +29,10 @@ A simple and efficient REST API for tracking daily habits, built with **Node.js*
 1. **Clone the repo:**
 
    ```bash
-   git clone https://github.com/yourusername/habit-tracker-api.git
+   git clone https://github.com/SamueldDev/habit-tacker-backend.git
    cd habit-tracker-api
 
 ---
-
-⚙️ Installation
-
-1. **Clone the repo:**
-
-   git clone https://github.com/yourusername/habit-tracker-api.git
-   cd habit-tracker-api
 
 Install dependencies:
 
@@ -52,28 +42,43 @@ Configure environment:
 Create a .env file in the root and add:
 
 PORT=5000
+
 DB_NAME=your_db_name
+
 DB_USER=your_mysql_user
+
 DB_PASSWORD=your_mysql_password
+
 JWT_SECRET=your_secret_key
 
 SENDGRID_API_KEY=your_sendgrid_key
+
 VERIFIED_SENDER_EMAIL=your_verified_sender_email
 
 npm run dev
+
 Start the server:
 
 npm run dev
 
 📁 Project Structure
+
 habit-tracker/
+
 ├── controllers/
+
 ├── models/
+
 ├── routes/
+
 ├── utils/
+
 ├── middleware/
+
 ├── jobs/ # Cron jobs for daily resets/reminders
+
 ├── config/ # DB and env setup
+
 └── server.js
 
 ---
@@ -97,6 +102,7 @@ habit-tracker/
 | GET    | /api/testemail | Send test reminder email |
 
 🕑 Daily Cron Jobs
+
 Habit streaks are reset every 24 hours
 
 Reminders sent via SendGrid to users with uncompleted habits
@@ -104,13 +110,17 @@ Reminders sent via SendGrid to users with uncompleted habits
 Setup using node-cron in /jobs/ directory
 
 🧪 Testing
+
 Use Postman to test all routes. Pass your JWT token in the headers:
 
 🧪 API Docs & Tools
+
 📘 Swagger API Documentation
+
 👉 View Swagger Docs
 
 📬 Postman Collection
+
 👉 Open in Postman
 
 Use Postman to test all routes. Pass your JWT token in the headers:
@@ -118,11 +128,15 @@ Use Postman to test all routes. Pass your JWT token in the headers:
 Authorization: Bearer <your_token>
 
 🧑‍💻 Author
+
 Samuel Friday
+
 Backend Developer
+
 Feel free to connect!
 
 ✅ License
+
 This project is open-source and free to use.
 
 ---
