@@ -30,7 +30,7 @@ A simple and efficient REST API for tracking daily habits, built with **Node.js*
 
    ```bash
    git clone https://github.com/SamueldDev/habit-tacker-backend.git
-   cd habit-tracker-api
+   cd habit-tracker
 
 ---
 
