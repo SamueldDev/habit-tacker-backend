@@ -1,12 +1,7 @@
 
-
-// import Habit from "../models/HabitModel.js";
-// import HabitCompletion from "../models/HabitCompletionModel.js";
-// import { Op } from "sequelize";
-
 import HabitCompletion from "../models/habitCompletionModel.js";
 import  Habit  from "../models/habitModel.js";
-import { Op } from "sequelize";
+
 
 export const completeHabitToday = async (req, res) => {
   const userId = req.user.id;

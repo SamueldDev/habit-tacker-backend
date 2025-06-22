@@ -21,7 +21,7 @@ const Habit = sequelize.define("Habit", {
     allowNull: false,
   },
   frequency: {
-    type: DataTypes.JSON, // Can be ["Mon", "Wed"] or "daily"
+    type: DataTypes.JSON, // ["Mon", "Wed"] or "daily"
     allowNull: false,
   },
   reminderTime: {
@@ -40,10 +40,6 @@ const Habit = sequelize.define("Habit", {
   timestamps: true,
   tableName: "habits",
 });
-
-// // 🧩 Association (many habits per user)
-// Habit.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
-// User.hasMany(Habit, { foreignKey: "userId" });
 
 
 export default Habit;

@@ -3,7 +3,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-// import Habit from "./Habit.js";
 
 const ReminderLog = sequelize.define("ReminderLog", {
   id: {
@@ -24,12 +23,8 @@ const ReminderLog = sequelize.define("ReminderLog", {
     defaultValue: "email", // could be "email", "sms", "push", etc.
   },
 }, {
-  timestamps: false, // You already have sentAt, no need for createdAt/updatedAt
+  timestamps: false, //
   tableName: "reminder_logs",
 });
-
-// // 🧩 Associations
-// ReminderLog.belongsTo(Habit, { foreignKey: "habitId", onDelete: "CASCADE" });
-// Habit.hasMany(ReminderLog, { foreignKey: "habitId" });
 
 export default ReminderLog;

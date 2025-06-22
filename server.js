@@ -1,12 +1,16 @@
 
-
 import express from "express"
 
 import { sequelize } from "./models/index.js";
 import dotenv from "dotenv";
 import cors from "cors"
-dotenv.config();
+import cron from "node-cron"
+import sendReminders from "./jobs/sendRemainder.js";
+import { setupSwagger } from "./config/swagger.js";
 
+
+import { resetStreaks } from "./jobs/resetStreaks.js";
+dotenv.config();
 
 import userRoute from "./routes/userRoute.js"
 import habitRoute from "./routes/habitRoute.js"
@@ -15,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express()
 
-
+setupSwagger(app)
 
 // parse json bodies
 app.use(express.json())
@@ -34,17 +38,41 @@ const start = async () => {
     try{
 
       await sequelize.authenticate()
-      console.log('DB connected')
+      console.log('DB connnected')
 
       await sequelize.sync({ alter: true})
       console.log("database synced ")
 
-      //  await sequelize.sync({ force: true})
-      // console.log("tabeles dropped and recreated ")
-
       app.listen(PORT, () => {
         console.log(`server running on port ${PORT}`)
       })
+      
+      cron.schedule("59 23 * * *", async () => {
+          console.log("⏱ Running daily streak reset...");
+          await resetStreaks();
+      });
+
+
+            
+      cron.schedule("* * * * *", async () => {
+        console.log("📧 Running daily reminder emails...");
+        await sendReminders();
+      });
+
+      
+    
+
+      //  cron.schedule("* * * * *", async () => {
+      //   console.log("⏱ Running streak reset every minute (DEV MODE)");
+      //   await resetStreaks();
+      // });
+
+
+      // cron.schedule("0 20 * * *", async () => {
+      //   console.log("📧 Running daily reminder emails...");
+      //   await sendReminders();
+      // });
+
 
     }catch(err){  
         console.error("Unable to connect to database:", err)

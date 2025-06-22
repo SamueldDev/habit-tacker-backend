@@ -32,8 +32,5 @@ const HabitCompletion = sequelize.define("HabitCompletion", {
   ]
 });
 
-// // 🧩 Associations
-// HabitCompletion.belongsTo(Habit, { foreignKey: "habitId", onDelete: "CASCADE" });
-// Habit.hasMany(HabitCompletion, { foreignKey: "habitId" });
 
 export default HabitCompletion;
