@@ -20,7 +20,7 @@ A simple and efficient REST API for tracking daily habits, built with **Node.js*
   
 - 📘 **Swagger Docs**: [`/api-docs`](https://habit-tacker-backend-production.up.railway.app/api-docs)
   
-- 📬 **Postman Collection**: [View on GitHub](https://github.com/SamueldDev/habit-tacker-backend.git/blob/main/Habit_tracker_API.postman_collection.json)
+- 📬 **Postman Collection**: [View on GitHub](https://github.com/SamueldDev/habit-tacker-backend/blob/main/Habit_tracker_API.postman_collection.json)
 
 ## 📦 Technologies Used
 
