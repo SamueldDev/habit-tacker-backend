@@ -8,14 +8,12 @@ import cron from "node-cron"
 import sendReminders from "./jobs/sendRemainder.js";
 import { setupSwagger } from "./config/swagger.js";
 
-
 import { resetStreaks } from "./jobs/resetStreaks.js";
 dotenv.config();
 
 import userRoute from "./routes/userRoute.js"
 import habitRoute from "./routes/habitRoute.js"
 
-// import testemailRoute from "./routes/testemailRoute.js"
 
 const PORT = process.env.PORT || 5000;
 
@@ -36,7 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoute)
 app.use("/api", habitRoute)
 
-// app.use("/api", testemailRoute)
+
 
 const start = async () => {
     try{
@@ -47,10 +45,6 @@ const start = async () => {
       await sequelize.sync({ alter: true})
       console.log("database synced ")
 
-      
-      // //  await sequelize.sync({ force: true})
-      // console.log("tabeles dropped and recreated ")
-     
 
       app.listen(PORT, () => {
         console.log(`server running on port ${PORT}`)

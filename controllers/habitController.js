@@ -2,6 +2,8 @@
 import Habit from "../models/habitModel.js";
 import HabitCompletion from "../models/habitCompletionModel.js";
 
+
+// create habit
 export const createHabit = async (req, res) => {
   try {
     const { name, frequency, reminderTime } = req.body;
@@ -35,7 +37,7 @@ export const createHabit = async (req, res) => {
 
 
 
-
+// get all habits
 export const getAllHabits = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -60,7 +62,7 @@ export const getAllHabits = async (req, res) => {
 
 
 
-
+// get habit history
 export const getHabitHistory = async (req, res) => {
   try {
     const userId = req.user.id;

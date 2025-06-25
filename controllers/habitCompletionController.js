@@ -6,17 +6,17 @@ import  Habit  from "../models/habitModel.js";
 export const completeHabitToday = async (req, res) => {
   const userId = req.user.id;
   const habitId = req.params.id;
-  const today = new Date().toISOString().split("T")[0]; // e.g. "2025-06-21"
+  const today = new Date().toISOString().split("T")[0]; //  "2025-06-21"
 
   try {
-    // 1. Find the habit
+    //  Find the habit
     const habit = await Habit.findOne({ where: { id: habitId, userId } });
 
     if (!habit) {
       return res.status(404).json({ message: "Habit not found" });
     }
 
-    // 2. Check if already completed today
+    // Check if already completed today
     const alreadyCompleted = await HabitCompletion.findOne({
       where: {
         habitId,
@@ -28,14 +28,14 @@ export const completeHabitToday = async (req, res) => {
       return res.status(400).json({ message: "Habit already marked as done today" });
     }
 
-    // 3. Create completion record
+    //  Create completion record
     await HabitCompletion.create({
       habitId,
       date: today,
       isCompleted: true,
     });
 
-    // 4. Update streak if lastCompletedAt is yesterday
+    //  Update streak if lastCompletedAt is yesterday
     const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
 
     let newStreak = 1;

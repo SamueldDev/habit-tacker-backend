@@ -29,7 +29,7 @@ const User = sequelize.define("User", {
   sequelize,
  timestamps: true,
   modelName: "User",
-  tableName: "user_tracker" // 👈 custom table name
+  tableName: "user_tracker" // table name
 }); 
 
 export default User;

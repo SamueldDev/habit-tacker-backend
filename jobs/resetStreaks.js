@@ -6,6 +6,7 @@ import  Habit  from "../models/habitModel.js";
 import { Op } from "sequelize";
 dotenv.config();
 
+// reset streak
 export const resetStreaks = async () => {
   try {
     const today = new Date().toISOString().split("T")[0];

@@ -1,7 +1,5 @@
 
 
-
-
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from "swagger-ui-express"
 
@@ -70,7 +68,7 @@ const swaggerSpec = swaggerJSDoc(options);
 export function setupSwagger(app) {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-  // ✅ Serve the raw Swagger JSON here:
+  // Serve the raw Swagger JSON 
     app.get('/api-docs-json', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);

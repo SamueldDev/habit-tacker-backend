@@ -3,6 +3,7 @@
 
 import{ body, validationResult } from "express-validator"
 
+// register validator
 export const registerValidator = [
   body("name").escape().notEmpty().withMessage("name is required"),
   body("email").escape().isEmail().withMessage("Valid email is required"),
@@ -11,12 +12,15 @@ export const registerValidator = [
     .withMessage("Password must be at least 6 characters"),
 ];
 
+
+// login validator
 export const loginValidator = [
   body("email").escape().isEmail().withMessage("Valid email is required"),
   body("password").escape().notEmpty().withMessage("Password is required"),
 ];
 
 
+// validation result
 export const validationResultMiddleware = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

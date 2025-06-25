@@ -9,12 +9,9 @@ import User from "./userModel.js";
 ReminderLog.belongsTo(Habit, { foreignKey: "habitId", onDelete: "CASCADE" });
 Habit.hasMany(ReminderLog, { foreignKey: "habitId" });
 
-
-// 🧩 Associations
 HabitCompletion.belongsTo(Habit, { foreignKey: "habitId", onDelete: "CASCADE" });
 Habit.hasMany(HabitCompletion, { foreignKey: "habitId" });
 
-// 🧩 Association (many habits per user)
 Habit.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 User.hasMany(Habit, { foreignKey: "userId" });
 

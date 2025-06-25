@@ -4,8 +4,6 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
 
-// import User from "./userModel.js";
-
 const Habit = sequelize.define("Habit", {
   id: {
     type: DataTypes.UUID,

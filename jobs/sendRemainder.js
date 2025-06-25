@@ -13,7 +13,7 @@ import sendReminderEmail from "../utils/sendRemainderEmail.js";
 dotenv.config();
 
 
-
+// send remainder
 const sendReminders = async () => {
   const now = new Date();
   const currentTime = now.toTimeString().split(":").slice(0, 2).join(":"); // "HH:MM"
