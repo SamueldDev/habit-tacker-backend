@@ -3,7 +3,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-
 const Habit = sequelize.define("Habit", {
   id: {
     type: DataTypes.UUID,
@@ -38,6 +37,5 @@ const Habit = sequelize.define("Habit", {
   timestamps: true,
   tableName: "habits",
 });
-
 
 export default Habit;

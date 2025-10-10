@@ -3,7 +3,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-
 const HabitCompletion = sequelize.define("HabitCompletion", {
   id: {
     type: DataTypes.UUID,

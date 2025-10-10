@@ -3,7 +3,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-
 const ReminderLog = sequelize.define("ReminderLog", {
   id: {
     type: DataTypes.UUID,

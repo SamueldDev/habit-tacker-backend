@@ -1,0 +1,26 @@
+
+
+// await sequelize.sync()
+// console.log("database synced ")
+
+// await sequelize.sync({ alter: true})
+// console.log("database synced ")
+
+// await sequelize.sync({ force : true})
+// console.log("database droppped and recreated ")
+
+
+//  cron.schedule("* * * * *", async () => {
+//   console.log("⏱ Running streak reset every minute (DEV MODE)");
+//   await resetStreaks();
+// });
+
+
+// cron.schedule("0 20 * * *", async () => {
+//   console.log("📧 Running daily reminder emails...");
+//   await sendReminders();
+// });
+
+
+ // nodemon server.js
+

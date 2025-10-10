@@ -12,7 +12,7 @@
 //   } catch (error) {
 //     res.status(500).send({
 //         message : "failed to send message",
-//         errors: error.message
+//         errors: error
 
 //     });
 //   }

@@ -1,15 +1,11 @@
 
 
-
-
 import express from 'express';
 import { completeHabitToday } from '../controllers/habitCompletionController.js';
-
 import { createHabit, getAllHabits, getHabitHistory } from '../controllers/habitController.js';
 import { protectedAction } from '../middleware/authenticateMiddleware.js';
 
 const router = express.Router();
-
 
 
 /**
@@ -72,8 +68,6 @@ router.post('/habits', protectedAction, createHabit);
 router.get("/habits", protectedAction, getAllHabits);
 
 
-
-
 /**
  * @swagger
  * /api/habits/{id}/complete:
@@ -101,8 +95,6 @@ router.get("/habits", protectedAction, getAllHabits);
  */
 
 router.post("/habits/:id/complete", protectedAction, completeHabitToday);
-
-
 
 
 /**

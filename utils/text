@@ -1,6 +1,0 @@
-
-
-
-      //  await sequelize.sync({ force: true})
-      // console.log("tabeles dropped and recreated ")
-     

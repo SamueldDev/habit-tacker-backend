@@ -10,30 +10,36 @@ export const createHabit = async (req, res) => {
     const userId = req.user.id;
 
     if (!name || !frequency) {
-      return res.status(400).json({ message: 'Name and frequency are required.' });
+      return res.status(400).json({ message: "Name and frequency are required." });
+    }
+
+    // adjust reminder time if provided
+    let adjustedTime = null;
+    if (reminderTime) {
+      const [hours, minutes] = reminderTime.split(":");
+      const date = new Date();
+      date.setUTCHours(parseInt(hours) - 1, parseInt(minutes)); // Nigeria is UTC+1
+      adjustedTime = date.toTimeString().slice(0, 5); // "HH:MM"
     }
 
     const habit = await Habit.create({
       userId,
       name,
       frequency,
-      reminderTime: reminderTime || null,
+      reminderTime: adjustedTime,
       streak: 0,
       lastCompletedAt: null,
     });
 
     res.status(201).json({
-      message: 'Habit created successfully',
+      message: "Habit created successfully",
       habit,
     });
   } catch (error) {
-    console.error('Create Habit Error:', error);
-    res.status(500).json({ message: 'Server error', error });
+    console.error("Create Habit Error:", error);
+    res.status(500).json({ message: "Server error", error });
   }
 };
-
-
-
 
 
 
@@ -53,13 +59,6 @@ export const getAllHabits = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
-
-
-
-
-
-
-
 
 
 // get habit history

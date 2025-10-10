@@ -1,9 +1,9 @@
 
-import dotenv from "dotenv"
-import  Habit  from "../models/habitModel.js";
 
-
+import dotenv from "dotenv";
+import Habit from "../models/habitModel.js";
 import { Op } from "sequelize";
+
 dotenv.config();
 
 // reset streak
@@ -20,11 +20,15 @@ export const resetStreaks = async () => {
       },
     });
 
-    console.log(`Found ${habitsToReset.length} habits to reset`);
+    // console.log(`Found ${habitsToReset.length} habits to reset`);
+
     for (const habit of habitsToReset) {
-      console.log(`Resetting ${habit.name} | Last Completed: ${habit.lastCompletedAt}`);
+      console.log(
+        `Resetting ${habit.name} | Last Completed: ${habit.lastCompletedAt || "never"}`
+      );
+
+      // reset streak
       habit.streak = 0;
-      lastCompletedAt = today 
       await habit.save();
     }
 

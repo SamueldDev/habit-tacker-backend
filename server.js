@@ -1,6 +1,5 @@
 
 import express from "express"
-
 import { sequelize } from "./models/index.js";
 import dotenv from "dotenv";
 import cors from "cors"
@@ -14,8 +13,9 @@ dotenv.config();
 import userRoute from "./routes/userRoute.js"
 import habitRoute from "./routes/habitRoute.js"
 
+// import testemailRoute from "./routes/testemailRoute.js"
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 const app = express()
 
@@ -23,17 +23,16 @@ setupSwagger(app)
 
 // parse json bodies
 app.use(express.json())
-
 app.use(cors())
 
 //Routes
 app.get("/", (req, res) => {
     res.send("habit_tracker is live")
 })
-
 app.use("/api/user", userRoute)
 app.use("/api", habitRoute)
 
+// app.use("/api", testemailRoute)  
 
 
 const start = async () => {
@@ -42,9 +41,8 @@ const start = async () => {
       await sequelize.authenticate()
       console.log('DB connected')
 
-      await sequelize.sync({ alter: true})
+      await sequelize.sync()
       console.log("database synced ")
-
 
       app.listen(PORT, () => {
         console.log(`server running on port ${PORT}`)
@@ -53,10 +51,16 @@ const start = async () => {
       cron.schedule("59 23 * * *", async () => {
           console.log("⏱ Running daily streak reset...");
           await resetStreaks();
-      });
-  
+      });  
+
+        cron.schedule("* * * * *", async () => {
+         console.log("⏱ Running streak reset every minute (DEV MODE)");
+         await resetStreaks();          
+      }); 
+        
+      // Run every minute to check reminders
       cron.schedule("* * * * *", async () => {
-        console.log("📧 Running daily reminder emails...");
+        console.log("📧 Checking reminder times...");
         await sendReminders();
       });
 
@@ -64,7 +68,6 @@ const start = async () => {
         console.error("Unable to connect to database:", err)
     }
 }
-
 
 start()
 
@@ -79,19 +82,4 @@ start()
 
 
 
-
-
-  //  cron.schedule("* * * * *", async () => {
-  //   console.log("⏱ Running streak reset every minute (DEV MODE)");
-  //   await resetStreaks();
-  // });
-
-
-  // cron.schedule("0 20 * * *", async () => {
-  //   console.log("📧 Running daily reminder emails...");
-  //   await sendReminders();
-  // });
-
-
- // nodemon server.js
 

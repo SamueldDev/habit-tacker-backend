@@ -10,7 +10,6 @@ import { registerValidator, loginValidator, validationResultMiddleware } from ".
 const router = express.Router()
 
 
-
 /**
  * @swagger
  * /api/user/register:
@@ -71,8 +70,6 @@ const router = express.Router()
 router.post("/register", registerValidator, validationResultMiddleware, authLimiter,  register)
 
 
-
-
 /**
  * @swagger
  * /api/user/login:
@@ -127,6 +124,5 @@ router.post("/register", registerValidator, validationResultMiddleware, authLimi
  */
 
 router.post("/login", loginValidator, validationResultMiddleware, authLimiter, login)
-
 
 export default router
